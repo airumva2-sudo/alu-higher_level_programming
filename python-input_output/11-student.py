@@ -28,8 +28,9 @@ class Student:
             A dict containing only the requested attributes (if attrs
             is a valid list of strings), otherwise all attributes.
         """
-        if isinstance(attrs, list) and all(isinstance(a, str)
-                                            for a in attrs):
+        is_valid_list = (isinstance(attrs, list) and
+                          all(isinstance(a, str) for a in attrs))
+        if is_valid_list:
             return {k: v for k, v in self.__dict__.items() if k in attrs}
         return self.__dict__
 
